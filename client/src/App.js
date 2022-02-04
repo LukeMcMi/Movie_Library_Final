@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { Route, Switch } from "react-router-dom";
+import Auth from "./utils/auth";
+
+import LandingPage from "./pages/LandingPage/LandingPage.js";
+import LoginPage from "./pages/LoginPage/LoginPage.js";
+import RegisterPage from "./pages/RegisterPage/RegisterPage.js";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer"
+import MovieDetail from "./components/MovieDetail/MovieDetail"
+import FavoritePage from "./pages/FavoritePage/FavoritePage"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={(<div>Loading...</div>)}>
+      <NavBar />
+      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 72px)' }}>
+        <Switch>
+          <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+          <Route exact path="/movie/:movieId" component={Auth(MovieDetail, null)} />
+          <Route exact path="/favorite" component={Auth(FavoritePage, null)} />
+        </Switch>
+      </div>
+      <Footer />
+    </Suspense>
   );
 }
 

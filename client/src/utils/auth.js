@@ -1,49 +1,38 @@
-// use this to decode a token and get the user's information out of it
-import decode from 'jwt-decode';
+import React, { useEffect } from 'react';
+import { auth } from './user_actions';
+import { useSelector, useDispatch } from "react-redux";
 
-// create a new class to instantiate for a user
-class AuthService {
-  // get user data
-  getProfile() {
-    return decode(this.getToken());
-  }
+// eslint-disable-next-line import/no-anonymous-default-export
+export default function (ComposedClass, reload, adminRoute = null) {
+    function AuthenticationCheck(props) {
 
-  // check if user's logged in
-  loggedIn() {
-    // Checks if there is a saved token and it's still valid
-    const token = this.getToken();
-    return !!token && !this.isTokenExpired(token); // handwaiving here
-  }
+        let user = useSelector(state => state.user);
+        const dispatch = useDispatch();
 
-  // check if token is expired
-  isTokenExpired(token) {
-    try {
-      const decoded = decode(token);
-      if (decoded.exp < Date.now() / 1000) {
-        return true;
-      } else return false;
-    } catch (err) {
-      return false;
+        useEffect(() => {
+
+            dispatch(auth()).then(async response => {
+                if (!response.payload.isAuth) {
+                    if (reload) {
+                        props.history.push('/register_login')
+                    }
+                } else {
+                    if (adminRoute && !response.payload.isAdmin) {
+                        props.history.push('/')
+                    }
+                    else {
+                        if (reload === false) {
+                            props.history.push('/')
+                        }
+                    }
+                }
+            })
+
+        }, [dispatch, props.history, user.googleAuth])
+
+        return (
+            <ComposedClass {...props} user={user} />
+        )
     }
-  }
-
-  getToken() {
-    // Retrieves the user token from localStorage
-    return localStorage.getItem('id_token');
-  }
-
-  login(idToken) {
-    // Saves user token to localStorage
-    localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
-  }
-
-  logout() {
-    // Clear user token and profile data from localStorage
-    localStorage.removeItem('id_token');
-    // this will reload the page and reset the state of the application
-    window.location.assign('/');
-  }
+    return AuthenticationCheck
 }
-
-export default new AuthService();
