@@ -4,11 +4,10 @@
   "description": "",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm run build"
+		"start": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+		"backend": "nodemon server/index.js",
+		"frontend": "npm run start --prefix client",
+		"dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
   },
   "keywords": [],
   "author": "",
