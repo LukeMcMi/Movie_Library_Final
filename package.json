@@ -1,8 +1,12 @@
 {
   "name": "movie_library",
   "version": "1.0.0",
-  "description": "",
-  "main": "server/index.js",
+	"description": "react inital setup",
+	"main": "index.js",
+	"engine": {
+		"node": "10.16.0",
+		"npm": "6.9.0"
+	},
   "scripts": {
 		"start": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
 		"backend": "nodemon server/index.js",
