@@ -63,6 +63,7 @@
     "pify": "^3.0.0",
     "prop-types": "^15.8.1",
     "ps-tree": "^1.2.0",
+    "react-dom": "^17.0.2",
     "react-is": "^16.13.1",
     "react-scripts": "^5.0.0",
     "read-pkg": "^4.0.1",
