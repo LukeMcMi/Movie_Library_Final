@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Button } from 'antd';
 import axios from 'axios';
-
 import Comments from './Sections/Comments'
 import LikeDislikes from './Sections/LikeDislikes';
 import { API_URL, API_KEY, IMAGE_BASE_URL, IMAGE_SIZE } from '../../utils/Config'
