@@ -1,5 +1,5 @@
 {
-	"name": "react-initial",
+	"name": "lm",
 	"version": "1.0.0",
 	"description": "react inital setup",
 	"main": "index.js",
@@ -33,5 +33,6 @@
 	"devDependencies": {
 		"concurrently": "4.1.0",
 		"nodemon": "1.19.1"
-	}
+	},
+	"repository": "git@github.com:LukeMcMi/Movie_Library_Final.git"
 }
