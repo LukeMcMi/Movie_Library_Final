@@ -3,8 +3,6 @@ const router = express.Router();
 
 const { Favorite } = require("../models/Favorite");
 
-const { auth } = require("../middleware/auth");
-
 
 router.post("/favoriteNumber", (req, res) => {
 
@@ -16,8 +14,6 @@ router.post("/favoriteNumber", (req, res) => {
         })
 
 });
-
-
 
 router.post("/favorited", (req, res) => {
 
