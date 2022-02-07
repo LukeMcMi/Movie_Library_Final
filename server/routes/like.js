@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { Like } = require("../models/Like");
-const { Dislike } = require("../models/Dislike");
+const { Like } = require("../models/Like.js");
+const { Dislike } = require("../models/Dislike.js");
 
 
 router.post("/getLikes", (req, res) => {
