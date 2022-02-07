@@ -114,7 +114,7 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "nodemon server/index.js",
     "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
