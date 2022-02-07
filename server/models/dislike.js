@@ -13,4 +13,6 @@ const dislikeSchema = mongoose.Schema({
 },
     { timestamps: true })
 
-module.exports = Dislike = mongoose.model('Dislike', dislikeSchema);
+    const Dislike = mongoose.model('Dislike', dislikeSchema);
+
+    module.exports = { Dislike }
