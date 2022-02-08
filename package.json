@@ -122,7 +122,8 @@
 		"frontend": "npm run start --prefix client",
 		"dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
