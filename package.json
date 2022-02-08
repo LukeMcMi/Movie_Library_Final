@@ -117,10 +117,12 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "start": "node server/index.js",
 		"backend": "node server/index.js",
 		"frontend": "npm run start --prefix client",
-		"dev": "concurrently \"npm run backend\" \"npm run start --prefix client\""
+		"dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
