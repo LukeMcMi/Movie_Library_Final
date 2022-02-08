@@ -7,7 +7,7 @@ function MovieInfo(props) {
 
   return (
     <Descriptions title="Movie details" bordered size='default'>
-      <Descriptions.Item style={{ padding: '400px' }} label="Title">{movie.original_title}</Descriptions.Item>
+      <Descriptions.Item style={{ padding: '40px' }} label="Title">{movie.original_title}</Descriptions.Item>
       <Descriptions.Item label="Release date">{movie.release_date}</Descriptions.Item>
       <Descriptions.Item label="Revenue">{movie.revenue} USD</Descriptions.Item>
       <Descriptions.Item label="Runtime">{movie.runtime} minutes</Descriptions.Item>
