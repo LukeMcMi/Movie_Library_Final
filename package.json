@@ -117,9 +117,10 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "node server/index.js",
-    "develop": "concurrently \"node server/index.js\" \"cd client && npm start\"",
-    "install": "cd ./client && npm i",
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
   "repository": {
