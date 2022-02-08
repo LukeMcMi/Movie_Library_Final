@@ -1,4 +1,4 @@
-export const USER_SERVER = '/';
+export const USER_SERVER = '/api/users';
 
 export const API_URL = 'https://api.themoviedb.org/3/';
 export const API_KEY = 'a2cebdae73fb8fefdca5d779cfc8d449';
