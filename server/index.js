@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
 
   // index.html for all page routes
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(`../client/app.js`));
+    res.sendFile(path.resolve(`../client/public/index.html`));
   });
 }
 
