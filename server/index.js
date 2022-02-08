@@ -19,20 +19,19 @@ app.use('/api/comment', require('./routes/comment'));
 app.use('/api/like', require('./routes/like'));
 app.use('/api/favorite', require('./routes/favorite'));
 
-// https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
-app.use('/uploads', express.static('uploads'));
+server.applyMiddleware({app});
 
-// Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-  // Set static folder
-  app.use(express.static("client/build"));
-
-  // index.html for all page routes
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(`../client/public/index.html`));
-  });
+// if we're in production, serve client/build as static assets
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 const port = process.env.PORT || 5000
 
